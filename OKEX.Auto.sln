@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.TradeApi", "src\OKEX.Auto.TradeApi\OKEX.Auto.TradeApi.csproj", "{71CFDE90-4C6E-4437-9F8E-B1E504F71ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.TradeApi", "src\OKEX.Auto.TradeApi\OKEX.Auto.TradeApi.csproj", "{71CFDE90-4C6E-4437-9F8E-B1E504F71ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.TradeAdmin", "src\OKEX.Auto.TradeAdmin\OKEX.Auto.TradeAdmin.csproj", "{539FF2BA-D0C0-4D59-BC57-6B019C9BB210}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core", "src\OKEX.Auto.Core\OKEX.Auto.Core.csproj", "{BFBEEB2B-AB24-4A56-AE68-EC8C9978664A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.TradeAdmin", "src\OKEX.Auto.TradeAdmin\OKEX.Auto.TradeAdmin.csproj", "{539FF2BA-D0C0-4D59-BC57-6B019C9BB210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{539FF2BA-D0C0-4D59-BC57-6B019C9BB210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{539FF2BA-D0C0-4D59-BC57-6B019C9BB210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{539FF2BA-D0C0-4D59-BC57-6B019C9BB210}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFBEEB2B-AB24-4A56-AE68-EC8C9978664A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFBEEB2B-AB24-4A56-AE68-EC8C9978664A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFBEEB2B-AB24-4A56-AE68-EC8C9978664A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFBEEB2B-AB24-4A56-AE68-EC8C9978664A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
