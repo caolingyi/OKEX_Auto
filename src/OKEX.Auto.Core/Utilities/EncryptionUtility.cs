@@ -571,45 +571,6 @@ namespace OKEX.Auto.Core.Utilities
             return m_strDecrypt;
         }
 
-        //密钥对，请配合密钥生成工具使用
-        private const string PublicRsaKey1 = @"<RSAKeyValue>
-  <Modulus>8Yvf/LjXRhCuOREk2CuSYvbD/RadwJ4sjHREIpQVKwkTlG3BtRgpnaMcoeLAesmwvpBWnqK4hBkYLxhRj+NEKnlGrJ+LkNMnZr0/4CMuulZFAnx7iQYaSq7Eh7kBKGLofc05CjZguYpnPNxHIv4VNx+a9tIh+hnhjrmkJLUm3l0=</Modulus>
-  <Exponent>AQAB</Exponent>
-</RSAKeyValue>";
-        private const string PrivateRsaKey1 = @"<RSAKeyValue>
-  <Modulus>8Yvf/LjXRhCuOREk2CuSYvbD/RadwJ4sjHREIpQVKwkTlG3BtRgpnaMcoeLAesmwvpBWnqK4hBkYLxhRj+NEKnlGrJ+LkNMnZr0/4CMuulZFAnx7iQYaSq7Eh7kBKGLofc05CjZguYpnPNxHIv4VNx+a9tIh+hnhjrmkJLUm3l0=</Modulus>
-  <Exponent>AQAB</Exponent>
-  <P>/xAaa/4dtDxcEAk5koSZBPjuxqvKJikpwLA1nCm3xxAUMDVxSwQyr+SHFaCnBN9kqaNkQCY6kDCfJXFWPOj0Bw==</P>
-  <Q>8m8PFVA4sO0oEKMVQxt+ivDTHFuk/W154UL3IgC9Y6bzlvYewXZSzZHmxZXXM1lFtwoYG/k+focXBITsiJepew==</Q>
-  <DP>ONVSvdt6rO2CKgSUMoSfQA9jzRr8STKE3i2lVG2rSIzZosBVxTxjOvQ18WjBroFEgdQpg23BQN3EqGgvqhTSQw==</DP>
-  <DQ>gfp7SsEM9AbioTDemHEoQlPly+FyrxE/9D8UAt4ErGX5WamxSaYntOGRqcOxcm1djEpULMNP90R0Wc7uhjlR+w==</DQ>
-  <InverseQ>C0eBsp2iMOxWwKo+EzkHOP0H+YOitUVgjekGXmSt9a3TvikQNaJ5ATlqKsZaMGsnB6UIHei+kUaCusVX0HgQ2A==</InverseQ>
-  <D>tPYxEfo9Nb3LeO+SJe3G1yO+w37NIwCdqYB1h15f2YUMSThNVmpKy1HnYpUp1RQDuVETw/duu3C9gJL8kAsZBjBrVZ0zC/JZsgvSNprfUK3Asc4FgFsGfQGKW1nvvgdMbvqr4ClB0R8czkki+f9Oc5ea/RMqXxlI+XjzMYDEknU=</D>
-</RSAKeyValue>";
-
-        /// <summary>
-        /// RSA 加密(非对称加密)
-        /// </summary>
-        public static string RSAEncrypt1(this string source)
-        {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(PublicRsaKey1);
-            var cipherbytes = rsa.Encrypt(Encoding.UTF8.GetBytes(source), true);
-            return Convert.ToBase64String(cipherbytes);
-        }
-
-        /// <summary>
-        /// RSA解密
-        /// </summary>
-        public static string RSADecrypt1(this string source)
-        {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(PrivateRsaKey1);
-            var cipherbytes = rsa.Decrypt(Convert.FromBase64String(source), true);
-            return Encoding.UTF8.GetString(cipherbytes);
-        }
-
-
         /// <summary>
         /// 生成密钥
         /// <param name="PrivateKey">私钥</param>
@@ -621,50 +582,6 @@ namespace OKEX.Auto.Core.Utilities
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(KeySize);
             PrivateKey = rsa.ToXmlString(true); //将RSA算法的私钥导出到字符串PrivateKey中 参数为true表示导出私钥 true 表示同时包含 RSA 公钥和私钥；false 表示仅包含公钥。
             PublicKey = rsa.ToXmlString(false); //将RSA算法的公钥导出到字符串PublicKey中 参数为false表示不导出私钥 true 表示同时包含 RSA 公钥和私钥；false 表示仅包含公钥。
-        }
-
-        /// <summary>
-        /// RSA加密 将公钥导入到RSA对象中，准备加密
-        /// </summary>
-        /// <param name="PublicKey">公钥</param>
-        /// <param name="encryptstring">待加密的字符串</param>
-        public static string RSAEncrypt(string PublicKey, string encryptstring)
-        {
-            try
-            {
-                byte[] PlainTextBArray;
-                byte[] CypherTextBArray;
-                string Result;
-                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-                rsa.FromXmlString(PublicKey);
-                PlainTextBArray = (new UnicodeEncoding()).GetBytes(encryptstring);
-                CypherTextBArray = rsa.Encrypt(PlainTextBArray, false);
-                Result = Convert.ToBase64String(CypherTextBArray);
-                return Result;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        /// <summary>
-        /// RSA解密 将私钥导入RSA中，准备解密
-        /// </summary>
-        /// <param name="PrivateKey">私钥</param>
-        /// <param name="decryptstring">待解密的字符串</param>
-        public static string RSADecrypt(string PrivateKey, string decryptstring)
-        {
-            byte[] PlainTextBArray;
-            byte[] DypherTextBArray;
-            string Result;
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(PrivateKey);
-            PlainTextBArray = Convert.FromBase64String(decryptstring);
-            DypherTextBArray = rsa.Decrypt(PlainTextBArray, false);
-            Result = (new UnicodeEncoding()).GetString(DypherTextBArray);
-            return Result;
         }
 
         /// <summary>
