@@ -6,6 +6,8 @@ namespace OKEX.Auto.Core.ORM.Dapper.Base
     {
         public string Configuration { get; set; }
 
+        public string DbType { get; set; }
+
         DapperDBContextOptions IOptions<DapperDBContextOptions>.Value
         {
             get { return this; }

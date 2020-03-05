@@ -18,13 +18,13 @@ namespace OKEX.Auto.Core.ORM.Dapper.Base
 
         public bool IsTransactionStarted { get; private set; }
 
-        protected abstract IDbConnection CreateConnection(string connectionString);
+        protected abstract IDbConnection CreateConnection(string connectionString,string dbType);
 
         protected DapperDBContext(IOptions<DapperDBContextOptions> optionsAccessor)
         {
             _options = optionsAccessor.Value;
 
-            _connection = CreateConnection(_options.Configuration);
+            _connection = CreateConnection(_options.Configuration, _options.DbType);
             _connection.Open();
 
             DebugPrint("Connection started.");

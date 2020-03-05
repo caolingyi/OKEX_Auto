@@ -75,6 +75,7 @@ namespace OKEX.Auto.TradeApi.Extensions
             services.AddDapperDBContext<DefaultDapperDBContext>(options =>
             {
                 options.Configuration = "";
+                options.DbType = "PostgreSql";//"SqlServer"
             });
 
             return services;
