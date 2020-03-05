@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.TradeApi", "src\O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.Domain", "src\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj", "{EB5FA252-04F9-48AB-BE64-7A5142365E1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.Application", "src\OKEX.Auto.Core.Application\OKEX.Auto.Core.Application.csproj", "{70A0B8D9-9EB5-423B-A790-68B03652052E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.ORM", "src\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj", "{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{EB5FA252-04F9-48AB-BE64-7A5142365E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB5FA252-04F9-48AB-BE64-7A5142365E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB5FA252-04F9-48AB-BE64-7A5142365E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A0B8D9-9EB5-423B-A790-68B03652052E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A0B8D9-9EB5-423B-A790-68B03652052E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A0B8D9-9EB5-423B-A790-68B03652052E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A0B8D9-9EB5-423B-A790-68B03652052E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

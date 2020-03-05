@@ -5,7 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OKEX.Auto.Core.Application\OKEX.Auto.Core.Application.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core\OKEX.Auto.Core.csproj" />
   </ItemGroup>
 
 
