@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace  Asmkt.SupplierHandle.Core.DomainCore
+namespace  OKEX.Auto.Core.Domain.SeedWork
 {
     public interface IPagedResult
     {

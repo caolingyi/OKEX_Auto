@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Asmkt.SupplierHandle.Core.DomainCore
+namespace OKEX.Auto.Core.Domain.SeedWork
 {
     public abstract class BaseEntity
     {
