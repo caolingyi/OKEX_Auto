@@ -40,113 +40,8 @@ namespace OKEX.Auto.TradeApi.Extensions
 
             return services;
         }
-
-        public static IServiceCollection AddCustomSwagger(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "eShopOnContainers - Ordering HTTP API",
-                    Version = "v1",
-                    Description = "The Ordering Service HTTP API"
-                });
-                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.OAuth2,
-                    Flows = new OpenApiOAuthFlows()
-                    {
-                        Implicit = new OpenApiOAuthFlow()
-                        {
-                            AuthorizationUrl = new Uri($"{configuration.GetValue<string>("IdentityUrlExternal")}/connect/authorize"),
-                            TokenUrl = new Uri($"{configuration.GetValue<string>("IdentityUrlExternal")}/connect/token"),
-                            Scopes = new Dictionary<string, string>()
-                            {
-                                { "orders", "Ordering API" }
-                            }
-                        }
-                    }
-                });
-
-                options.OperationFilter<AuthorizeCheckOperationFilter>();
-            });
-
-            return services;
-        }
-
-        public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = services.BuildServiceProvider().GetService<ConnectSettings>();
-
-            services.AddDbContext<DefaultEFDBContext>(options =>
-            {
-                options.UseSqlServer("");
-                options.UseNpgsql("");
-            });
-
-            services.AddDapperDBContext<DefaultDapperDBContext>(options =>
-            {
-                options.Configuration = "";
-                options.DbType = "PostgreSql";//"SqlServer"
-            });
-
-            return services;
-        }
-
-        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
-        {
-            // prevent from mapping "sub" claim to nameidentifier.
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
-
-            return services;
-        }
-
-        public static IServiceCollection AddSwagger(this IServiceCollection services, IConfiguration configuration)
-        {
-            //Swagger
-            services.AddSwaggerGen(options =>
-            {
-                // resolve the IApiVersionDescriptionProvider service
-                // note: that we have to build a temporary service provider here because one has not been created yet
-                var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
-
-                // add a swagger document for each discovered API version
-                // note: you might choose to skip or document deprecated API versions differently
-                foreach (var description in provider.ApiVersionDescriptions)
-                {
-                    options.SwaggerDoc(description.GroupName,
-                        new OpenApiInfo 
-                        {
-                            Title = $"OKEX v{description.ApiVersion}",
-                            Version = description.ApiVersion.ToString(),
-                            Description = "多版本管理（点右上角版本切换）<br/>",
-                            Contact = new OpenApiContact  { Name = "OKEX" }
-                        });
-                }
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme 
-                {
-                    Description = "请输入带有Bearer的Token",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-
-                //Json Token认证方式，此方式为全局添加
-
-               
-                // add a custom operation filter which sets default values
-                //options.OperationFilter<SwaggerDefaultValues>();
-
-                var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, "Asmkt.SupplierHandle.Api.xml");
-                options.IncludeXmlComments(xmlPath);
-            });
-
-            return services;
-        }
-
-
-
-        public static IServiceCollection AddApiVersion(this IServiceCollection services, IConfiguration configuration)
+        
+        public static IServiceCollection AddCustomApiVersion(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VVV");
 
@@ -161,10 +56,79 @@ namespace OKEX.Auto.TradeApi.Extensions
             return services;
         }
 
-        public static IServiceCollection AddCustomCache(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomSwagger(this IServiceCollection services, IConfiguration configuration)
+        {
+            //Swagger
+            services.AddSwaggerGen(options =>
+            {
+                // resolve the IApiVersionDescriptionProvider service
+                // note: that we have to build a temporary service provider here because one has not been created yet
+                var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
+
+                // add a swagger document for each discovered API version
+                // note: you might choose to skip or document deprecated API versions differently
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
+                    options.SwaggerDoc(description.GroupName,
+                        new OpenApiInfo
+                        {
+                            Title = $"OKEX v{description.ApiVersion}",
+                            Version = description.ApiVersion.ToString(),
+                            Description = "多版本管理（点右上角版本切换）<br/>",
+                            Contact = new OpenApiContact { Name = "OKEX" }
+                        });
+                }
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "请输入带有Bearer的Token",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                //Json Token认证方式，此方式为全局添加
+
+
+                // add a custom operation filter which sets default values
+                //options.OperationFilter<SwaggerDefaultValues>();
+
+                var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, "Asmkt.SupplierHandle.Api.xml");
+                options.IncludeXmlComments(xmlPath);
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddOptions();
+            services.ConfigureStartupConfig<ConnectSettings>(configuration.GetSection("ConnectSettings"));
+            services.ConfigureStartupConfig<OKEXSettings>(configuration.GetSection("OKEXSettings"));
+            return services;
+        }
+
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             var settings = services.BuildServiceProvider().GetService<ConnectSettings>();
 
+            services.AddDbContext<DefaultEFDBContext>(options =>
+            {
+                //options.UseSqlServer(settings.ConnectionString);
+                options.UseNpgsql(settings.ConnectionString);
+            });
+
+            services.AddDapperDBContext<DefaultDapperDBContext>(options =>
+            {
+                options.Configuration = "";
+                options.DbType = "PostgreSql";//"SqlServer"
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomCache(this IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = services.BuildServiceProvider().GetService<ConnectSettings>();
             // Redis
             services.AddSingleton<ICacheManager>(provider => new RedisCacheManager(new RedisConnectionWrapper(settings.RedisConnectionString, settings.RedisDb)));
           
@@ -193,12 +157,12 @@ namespace OKEX.Auto.TradeApi.Extensions
 
             return services;
         }
-
-        public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
+        
+        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddOptions();
-            services.ConfigureStartupConfig<ConnectSettings>(configuration.GetSection("ConnectSettings"));
-            services.ConfigureStartupConfig<OKEXSettings>(configuration.GetSection("OKEXSettings"));
+            // prevent from mapping "sub" claim to nameidentifier.
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
+
             return services;
         }
     }
