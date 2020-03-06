@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OKEX.Auto.Core.ExtensionHttpClient
 {
-    public class OKEXConfig
+    public class OKEXSettings
     {
         public string BaseUrl { get; set; }
     }

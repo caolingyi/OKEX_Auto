@@ -12,7 +12,7 @@ namespace OKEX.Auto.Core.ExtensionHttpClient.Clients
     {
         private readonly System.Net.Http.HttpClient _client;
 
-        public OKEXHttpClient(System.Net.Http.HttpClient httpClient, OKEXConfig fileSystemConfig) : base(httpClient)
+        public OKEXHttpClient(System.Net.Http.HttpClient httpClient, OKEXSettings fileSystemConfig) : base(httpClient)
         {
             httpClient.BaseAddress = new Uri(fileSystemConfig.BaseUrl);
             httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
