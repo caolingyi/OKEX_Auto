@@ -1,11 +1,10 @@
-﻿using OKEX.Auto.Core.Domain.SeedWork;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace OKEX.Auto.Core.ORM.RepositoryCore
+namespace OKEX.Auto.Core.Domain.SeedWork
 {
     /// <summary>
     /// Represents an entity repository

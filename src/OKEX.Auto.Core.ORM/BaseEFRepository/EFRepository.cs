@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace OKEX.Auto.Core.ORM.RepositoryCore
+namespace OKEX.Auto.Core.ORM.BaseEFRepository
 {
     /// <summary>
     /// Represents the Entity Framework repository

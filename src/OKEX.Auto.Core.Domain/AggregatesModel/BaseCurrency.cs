@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OKEX.Auto.Core.Domain.SeedWork;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace OKEX.Auto.Core.Domain.AggregatesModel
 {
-    public class BaseCurrency
+    public class BaseCurrency: BaseEntity
     {
         /// <summary>
         /// 币种名称，如btc
