@@ -4,6 +4,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OKEX.Auto.Core.Application\OKEX.Auto.Core.Application.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj" />
+    <ProjectReference Include="..\OKEX.Auto.Core\OKEX.Auto.Core.csproj" />
+  </ItemGroup>
+
 
 
 </Project>
