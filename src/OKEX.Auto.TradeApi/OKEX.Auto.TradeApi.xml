@@ -4,25 +4,31 @@
         <name>OKEX.Auto.TradeApi</name>
     </assembly>
     <members>
-        <member name="T:OKEX.Auto.TradeApi.ConnectSettings">
+        <member name="T:OKEX.Auto.TradeApi.Controllers.DeliveryContractController">
             <summary>
             
             </summary>
         </member>
-        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.ConnectionString">
-            <summary>
-            数据库连接
-            </summary>
-        </member>
-        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.RedisConnectionString">
+        <member name="M:OKEX.Auto.TradeApi.Controllers.DeliveryContractController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.DeliveryContractController},OKEX.Auto.Core.Domain.Interface.IPublicContractKLineRepository,OKEX.Auto.Core.ExtensionHttpClient.OKEXSettings,OKEX.Auto.Core.ExtensionHttpClient.Interface.IOKEXHttpClient)">
             <summary>
             
             </summary>
+            <param name="logger"></param>
+            <param name="publicContractKLineRepository"></param>
+            <param name="oKEXSettings"></param>
+            <param name="iOKEXHttpClient"></param>
         </member>
-        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.RedisDb">
+        <member name="M:OKEX.Auto.TradeApi.Controllers.DeliveryContractController.RequestKLine">
             <summary>
-            
+            请求交易平台 k线数据并保存
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OKEX.Auto.TradeApi.Controllers.DeliveryContractController.GetKLine">
+            <summary>
+            获取库中的k线数据
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.TestController},OKEX.Auto.Core.Domain.Interface.IBaseCurrencyRepository)">
             <summary>
@@ -36,6 +42,61 @@
             get
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineRequestModel.instrument_id">
+            <summary>
+            合约ID，如BTC-USD-180213,BTC-USDT-191227
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineRequestModel.start">
+            <summary>
+            开始时间（ISO 8601标准，例如：2018-06-20T02:31:00Z）
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineRequestModel.end">
+            <summary>
+            结束时间（ISO 8601标准，例如：2018-06-20T02:31:00Z）
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineRequestModel.granularity">
+            <summary>
+            时间粒度，以秒为单位，默认值60。如[60/180/300/900/1800/3600/7200/14400/21600/43200/86400/604800]，详见下解释说明
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.timestamp">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.open">
+            <summary>
+            开盘价格
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.high">
+            <summary>
+            最高价格
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.low">
+            <summary>
+            最低价格
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.close">
+            <summary>
+            收盘价格
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.volume">
+            <summary>
+            交易量（张）
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.Model.KLineResponseModel.currency_volume">
+            <summary>
+            按币种折算的交易量
+            </summary>
         </member>
     </members>
 </doc>

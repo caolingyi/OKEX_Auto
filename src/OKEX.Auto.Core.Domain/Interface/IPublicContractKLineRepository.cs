@@ -8,9 +8,10 @@ namespace OKEX.Auto.Core.Domain.Interface
 {
     public interface IPublicContractKLineRepository
     {
-        Task AddUserLocationAsync(PublicContractKLine publicContractKLine);
         Task<PublicContractKLine> GetAsync(string id);
         Task<List<PublicContractKLine>> GetListAsync();
-        Task UpdateUserLocationAsync(PublicContractKLine publicContractKLine);
+        Task AddAsync(PublicContractKLine publicContractKLine);
+        Task UpdateAsync(PublicContractKLine publicContractKLine);
+        Task AddRangeAsync(List<PublicContractKLine> publicContractKLines);
     }
 }

@@ -32,17 +32,22 @@ namespace OKEX.Auto.Core.ORM.Repositories
         }
 
 
-        public async Task AddUserLocationAsync(PublicContractKLine publicContractKLine)
+        public async Task AddAsync(PublicContractKLine publicContractKLine)
         {
             await _context.PublicContractKLines.InsertOneAsync(publicContractKLine);
         }
 
-        public async Task UpdateUserLocationAsync(PublicContractKLine publicContractKLine)
+        public async Task UpdateAsync(PublicContractKLine publicContractKLine)
         {
             await _context.PublicContractKLines.ReplaceOneAsync(
                 doc => doc.Id == publicContractKLine.Id,
                 publicContractKLine,
                 new UpdateOptions { IsUpsert = true });
+        }
+
+        public async Task AddRangeAsync(List<PublicContractKLine> publicContractKLines)
+        {
+            await _context.PublicContractKLines.InsertManyAsync(publicContractKLines);
         }
     }
 }
