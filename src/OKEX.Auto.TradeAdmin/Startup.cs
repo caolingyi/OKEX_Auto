@@ -64,6 +64,8 @@ namespace OKEX.Auto.TradeAdmin
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseCookiePolicy();
+            app.UseAuthentication();
             app.UseStaticFiles();
 
             app.UseRouting();
