@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OKEX.Auto.Core.Application;
+using OKEX.Auto.Core.Domain.Interface.OKEX;
+using OKEX.Auto.Core.Domain.Manager.OKEX;
 using OKEX.Auto.TradeApi.Extensions;
 
 namespace OKEX.Auto.TradeApi
@@ -43,6 +45,9 @@ namespace OKEX.Auto.TradeApi
             var container = new ContainerBuilder();
             container.Populate(services);
             container.RegisterModule(new RepositoryModule());
+
+
+            //services.AddScoped<IOkexFutureManager, OkexFutureManager>();
 
             return new AutofacServiceProvider(container.Build());
         }
