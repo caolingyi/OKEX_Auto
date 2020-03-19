@@ -92,7 +92,7 @@ namespace OKEX.Auto.TradeApi.Extensions
                 // add a custom operation filter which sets default values
                 //options.OperationFilter<SwaggerDefaultValues>();
 
-                var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, "Asmkt.SupplierHandle.Api.xml");
+                var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, "OKEX.Auto.TradeApi.xml");
                 options.IncludeXmlComments(xmlPath);
             });
 

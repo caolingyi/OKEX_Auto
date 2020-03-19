@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OKEX.Auto.TradeApi</name>
+    </assembly>
+    <members>
+        <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.TestController})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name=""></param>
+        </member>
+        <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.Get">
+            <summary>
+            get
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

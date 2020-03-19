@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\okex\OKEX_Auto\src\OKEX.Auto.TradeApi\OKEX.Auto.TradeApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
@@ -19,6 +23,12 @@
     <ProjectReference Include="..\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj" />
     <ProjectReference Include="..\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj" />
     <ProjectReference Include="..\OKEX.Auto.Core\OKEX.Auto.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="OKEX.Auto.TradeApi.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 
