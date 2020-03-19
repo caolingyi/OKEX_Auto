@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using OKEX.Auto.Core.Domain.AggregatesModel.contract;
 using OKEX.Auto.Core.Domain.Interface;
 using OKEX.Auto.Core.ExtensionHttpClient;
@@ -65,30 +67,39 @@ namespace OKEX.Auto.TradeApi.Controllers
 
                 var url = _oKEXSettings.BaseUrl + string.Format(DeliveryContractUrl.KLineUrl, requestModel.instrument_id, requestModel.start, requestModel.end, requestModel.granularity);
                 var response = await _iOKEXHttpClient.GetStringAsync(url);
-                var result = JsonConvert.DeserializeObject<List<KLineResponseModel>>(response);
-                if (result.Count > 0)
+                //var result = JsonConvert.DeserializeObject<ArrayList>(response);
+                if (response[0] == '[')
                 {
-                    var list = new List<PublicContractKLine>();
-                    foreach (var item in result)
+                    var result = JArray.Parse(response);
+
+                    if (result.Count > 0)
                     {
-                        var model = new PublicContractKLine();
-                        model.instrument_id = requestModel.instrument_id;
-                        model.start = requestModel.start;
-                        model.end = requestModel.end;
-                        model.granularity = requestModel.granularity;
+                        var list = new List<PublicContractKLine>();
+                        foreach (var item in result)
+                        {
+                            var model = new PublicContractKLine();
+                            model.instrument_id = requestModel.instrument_id;
+                            model.start = requestModel.start;
+                            model.end = requestModel.end;
+                            model.granularity = requestModel.granularity;
 
-                        model.timestamp = item.timestamp;
-                        model.open = item.open;
-                        model.high = item.high;
-                        model.low = item.low;
-                        model.close = item.close;
-                        model.volume = item.volume;
-                        model.currency_volume = item.currency_volume;
-                        list.Add(model);
+                            model.timestamp = item[0].ToString();
+                            model.open = item[1].ToString();
+                            model.high = item[2].ToString();
+                            model.low = item[3].ToString();
+                            model.close = item[4].ToString();
+                            model.volume = item[5].ToString();
+                            model.currency_volume = item[6].ToString();
+                            list.Add(model);
+                        }
+                        await _publicContractKLineRepository.AddRangeAsync(list);
                     }
-                    await _publicContractKLineRepository.AddRangeAsync(list);
                 }
-
+                else
+                {
+                    return Ok(response);
+                }
+               
                 return Ok();
             }
             catch (Exception ex)
@@ -117,6 +128,30 @@ namespace OKEX.Auto.TradeApi.Controllers
                 _logger.LogError(ex, "失败！");
                 return StatusCode(500);
             }
+        }
+
+        [NonAction]
+        private string[,] TranStrToTwoArray(string original)
+        {
+            if (original.Length == 0)
+            {
+                throw new IndexOutOfRangeException("original's length can not be zero");
+            }
+            //将字符串转换成数组（字符串拼接格式：***,***#***,***#***,***，例如apple,banana#cat,dog#red,black）
+            string[] originalRow = original.Split('#');
+            string[] originalCol = originalRow[0].Split(','); //string[,]是等长数组，列维度一样，只要取任意一行的列维度即可确定整个二维数组的列维度
+            int x = originalRow.Length;
+            int y = originalCol.Length;
+            string[,] twoArray = new string[x, y];
+            for (int i = 0; i < x; i++)
+            {
+                originalCol = originalRow[i].Split(',');
+                for (int j = 0; j < originalCol.Length; j++)
+                {
+                    twoArray[i, j] = originalCol[j];
+                }
+            }
+            return twoArray;
         }
     }
 }
