@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace OKEX.Auto.TradeAdmin
+namespace OKEX.Auto.Core.ORM
 {
     public class ConnectSettings
     {
         public string ConnectionString { get; set; }
-
         public string RedisConnectionString { get; set; }
         public int RedisDb { get; set; }
+        public string MongoConnectionString { get; set; }
+        public string MongoDb { get; set; }
     }
 }

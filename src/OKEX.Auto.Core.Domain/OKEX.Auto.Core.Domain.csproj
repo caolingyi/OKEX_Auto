@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.10.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.2" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.10.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OKEX.Auto.Core\OKEX.Auto.Core.csproj" />
   </ItemGroup>
 

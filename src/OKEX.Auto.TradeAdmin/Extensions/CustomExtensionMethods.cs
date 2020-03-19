@@ -9,6 +9,7 @@ using OKEX.Auto.Core.Context;
 using OKEX.Auto.Core.ExtensionHttpClient;
 using OKEX.Auto.Core.ExtensionHttpClient.Clients;
 using OKEX.Auto.Core.ExtensionHttpClient.Interface;
+using OKEX.Auto.Core.ORM;
 using OKEX.Auto.Core.ORM.BaseEFRepository;
 using System;
 using System.Collections.Generic;
