@@ -24,7 +24,7 @@
             
             </summary>
         </member>
-        <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.TestController})">
+        <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.TestController},OKEX.Auto.Core.Domain.Interface.IBaseCurrencyRepository)">
             <summary>
             
             </summary>

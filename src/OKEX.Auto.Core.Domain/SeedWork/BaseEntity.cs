@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OKEX.Auto.Core.Utilities;
+using System;
 using System.ComponentModel;
 
 namespace OKEX.Auto.Core.Domain.SeedWork
@@ -71,7 +72,7 @@ namespace OKEX.Auto.Core.Domain.SeedWork
 
         public virtual void Init(long id = 0)
         {
-            //this.Id = id > 0 ? id : IdHelper.BuildId();
+            this.Id = id > 0 ? id : IdHelper.BuildId();
             this.Status = StatusEnum.Enable;
             this.CreatedTime = DateTime.Now;
         }
