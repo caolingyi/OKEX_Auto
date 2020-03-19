@@ -4,6 +4,26 @@
         <name>OKEX.Auto.TradeApi</name>
     </assembly>
     <members>
+        <member name="T:OKEX.Auto.TradeApi.ConnectSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.ConnectionString">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.RedisConnectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OKEX.Auto.TradeApi.ConnectSettings.RedisDb">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:OKEX.Auto.TradeApi.Controllers.TestController.#ctor(Microsoft.Extensions.Logging.ILogger{OKEX.Auto.TradeApi.Controllers.TestController})">
             <summary>
             
