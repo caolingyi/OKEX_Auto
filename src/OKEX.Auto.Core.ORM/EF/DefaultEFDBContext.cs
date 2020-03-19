@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Linq;
@@ -24,6 +25,17 @@ namespace OKEX.Auto.Core.Context
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.ApplyConfiguration(configurationInstance);
             }
+        }
+    }
+
+    public class DefaultEFDBContextDesignFactory : IDesignTimeDbContextFactory<DefaultEFDBContext>
+    {
+        public DefaultEFDBContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<DefaultEFDBContext>()
+                .UseNpgsql("Server=47.96.159.0;Database=OKEX_DB;User Id=postgres;Password=postgres123;");
+
+            return new DefaultEFDBContext(optionsBuilder.Options);
         }
     }
 }
