@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.Core", "src\OKEX.Auto.Core\OKEX.Auto.Core.csproj", "{1F933B9D-9203-4AFB-ACD7-97D21AF440CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.TradeAdmin", "src\OKEX.Auto.TradeAdmin\OKEX.Auto.TradeAdmin.csproj", "{45B446E5-E592-4517-A7F2-144B59BA5983}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.TradeApi", "src\OKEX.Auto.TradeApi\OKEX.Auto.TradeApi.csproj", "{EEDA2631-3656-4CBC-AF16-9569A7983F66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.Domain", "src\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj", "{EB5FA252-04F9-48AB-BE64-7A5142365E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.Core.Domain", "src\OKEX.Auto.Core.Domain\OKEX.Auto.Core.Domain.csproj", "{EB5FA252-04F9-48AB-BE64-7A5142365E1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.Application", "src\OKEX.Auto.Core.Application\OKEX.Auto.Core.Application.csproj", "{70A0B8D9-9EB5-423B-A790-68B03652052E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.Core.Application", "src\OKEX.Auto.Core.Application\OKEX.Auto.Core.Application.csproj", "{70A0B8D9-9EB5-423B-A790-68B03652052E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.Core.ORM", "src\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj", "{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKEX.Auto.Core.ORM", "src\OKEX.Auto.Core.ORM\OKEX.Auto.Core.ORM.csproj", "{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKEX.Auto.TradeAdmin", "src\OKEX.Auto.TradeAdmin\OKEX.Auto.TradeAdmin.csproj", "{6206173E-6141-4970-B66F-E4767E4C0081}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{1F933B9D-9203-4AFB-ACD7-97D21AF440CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F933B9D-9203-4AFB-ACD7-97D21AF440CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F933B9D-9203-4AFB-ACD7-97D21AF440CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45B446E5-E592-4517-A7F2-144B59BA5983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45B446E5-E592-4517-A7F2-144B59BA5983}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45B446E5-E592-4517-A7F2-144B59BA5983}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45B446E5-E592-4517-A7F2-144B59BA5983}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEDA2631-3656-4CBC-AF16-9569A7983F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEDA2631-3656-4CBC-AF16-9569A7983F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEDA2631-3656-4CBC-AF16-9569A7983F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5901FCE-4604-47A2-8CA4-7CCE0BE5ACBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6206173E-6141-4970-B66F-E4767E4C0081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6206173E-6141-4970-B66F-E4767E4C0081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6206173E-6141-4970-B66F-E4767E4C0081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6206173E-6141-4970-B66F-E4767E4C0081}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
