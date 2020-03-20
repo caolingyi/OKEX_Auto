@@ -15,5 +15,12 @@ namespace OKEX.Auto.Core.Domain.Interface.OKEX
         Task<List<OkexFutureCandle>> GetCandlesDataAsync(string instrument_id, DateTime? start, DateTime? end, int? granularity);
 
         Task<OkexFutureTicker> GetTickerByInstrumentIdAsync(string instrument_id);
+
+        Task<OkexFurtueMakeOrderReponse> MakeOrderAsync(OkexFurtueMakeOrderRequest request);
+
+        Task<OkexFurtueCancelOrderReponse> CancelOrderAsync(string instrument_id, string order_id);
+
+
+
     }
 }
