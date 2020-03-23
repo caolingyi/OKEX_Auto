@@ -16,6 +16,8 @@
     <ProjectReference Include="..\OKEX.Auto.Core\OKEX.Auto.Core.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 
 
 </Project>
